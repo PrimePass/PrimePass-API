@@ -4,7 +4,9 @@ RUN apt-get update \
     && apt-get install -y libpq-dev libzip-dev --no-install-recommends zip unzip git\
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-configure bcmath \
-    && docker-php-ext-install pdo pdo_mysql pgsql bcmath mbstring
+    && docker-php-ext-install pdo pdo_mysql pgsql bcmath mbstring \
+    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
+    && docker-php-ext-install pdo pdo_pgsql pgsql
 RUN apt-get update && apt-get install -y libmemcached-dev \
     && pecl install memcached \
     && docker-php-ext-enable memcached

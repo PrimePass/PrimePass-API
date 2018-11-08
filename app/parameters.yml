@@ -1,0 +1,7 @@
+# Postgresl
+    psql_database_driver: pdo_pgsql
+    psql_database_host: 127.0.0.1
+    psql_database_port: 5432
+    psql_database_name: postgres-db
+    psql_database_user: root
+    psql_database_password: root
