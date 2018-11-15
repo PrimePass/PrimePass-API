@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\CinemaRepository")
  */
-class Product
+class Cinema
 {
     /**
      * @ORM\Id()
@@ -22,9 +22,14 @@ class Product
     private $name;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="boolean")
      */
-    private $price;
+    private $digital;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $priority;
 
     /**
      * @ORM\Column(type="datetime")
@@ -34,7 +39,7 @@ class Product
     /**
      * @ORM\Column(type="datetime")
      */
-    private $update_at;
+    private $updated_at;
 
     public function getId(): ?int
     {
@@ -53,14 +58,26 @@ class Product
         return $this;
     }
 
-    public function getPrice(): ?float
+    public function getDigital(): ?bool
     {
-        return $this->price;
+        return $this->digital;
     }
 
-    public function setPrice(float $price): self
+    public function setDigital(bool $digital): self
     {
-        $this->price = $price;
+        $this->digital = $digital;
+
+        return $this;
+    }
+
+    public function getPriority(): ?int
+    {
+        return $this->priority;
+    }
+
+    public function setPriority(int $priority): self
+    {
+        $this->priority = $priority;
 
         return $this;
     }
@@ -77,14 +94,14 @@ class Product
         return $this;
     }
 
-    public function getUpdateAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->update_at;
+        return $this->updated_at;
     }
 
-    public function setUpdateAt(\DateTimeInterface $update_at): self
+    public function setUpdatedAt(\DateTimeInterface $updated_at): self
     {
-        $this->update_at = $update_at;
+        $this->updated_at = $updated_at;
 
         return $this;
     }
