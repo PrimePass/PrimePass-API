@@ -12,13 +12,13 @@ final class Version20181115174456 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
-        $this->addSql("CREATE TABLE address (
+        $this->addSql('CREATE TABLE address (
             id SERIAL PRIMARY KEY,
             name VARCHAR(150) NOT NULL,
             "number" INT NOT NULL DEFAULT 0,
             district VARCHAR(60) NOT NULL,
             zip_code VARCHAR(15) NOT NULL
-        )");
+        )');
     }
 
     public function down(Schema $schema) : void
