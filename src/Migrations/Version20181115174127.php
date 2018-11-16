@@ -15,10 +15,10 @@ final class Version20181115174127 extends AbstractMigration
         $this->addSql("CREATE TABLE cinema (
             id SERIAL PRIMARY KEY,
             name VARCHAR(150) NOT NULL,
-            digital BOOLEAN NOT NULL DEFAULT 0,
+            digital INT NOT NULL DEFAULT 0,
             priority INT NOT NULL DEFAULT 0,
-            created_at TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00'::TIMESTAMP WITHOUT TIME ZONE,
-            updated_at TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00'::TIMESTAMP WITHOUT TIME ZONE
+            created_at TIMESTAMP NOT NULL DEFAULT '2001-01-01 00:00:00'::TIMESTAMP WITHOUT TIME ZONE,
+            updated_at TIMESTAMP NOT NULL DEFAULT '2001-01-01 00:00:00'::TIMESTAMP WITHOUT TIME ZONE
         )");
     }
 

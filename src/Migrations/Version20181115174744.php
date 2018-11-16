@@ -12,16 +12,16 @@ final class Version20181115174744 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
-        $this->addSql('CREATE TABLE theater_info (
+        $this->addSql("CREATE TABLE theater_info (
             id SERIAL PRIMARY KEY,
-            theater_id REFERENCES theater(id),
-            city_id REFERENCES city(id),
-            address_id REFERENCES address(id),
-            name NVARCHAR(255) NOT NULL,
-            is_active BIT NOT NULL DEFAULT 0,
+            theater_id INT REFERENCES theater(id),
+            city_id INT REFERENCES city(id),
+            address_id INT REFERENCES address(id),
+            name VARCHAR(255) NOT NULL,
+            is_active INT NOT NULL DEFAULT 0,
             latitude DOUBLE PRECISION NOT NULL,
-            longitude DOUBLE PRECISION NOT NULL,
-        )');
+            longitude DOUBLE PRECISION NOT NULL
+        )");
     }
 
     public function down(Schema $schema) : void
