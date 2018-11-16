@@ -12,18 +12,19 @@ final class Version20181115173450 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
-        // this up() migration is auto-generated, please modify it to your needs
-        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
-
-        $this->addSql('CREATE SEQUENCE movie_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE TABLE movie (id INT NOT NULL, velox_id VARCHAR(255) NOT NULL, ingresso_db INT NOT NULL, imdb_id VARCHAR(255) NOT NULL, status BOOLEAN NOT NULL, PRIMARY KEY(id))');
+        $this->addSql("CREATE TABLE movie (
+            id SERIAL PRIMARY KEY,
+            velox_id VARCHAR(10) DEFAULT NULL,
+            ingresso_db INT DEFAULT NULL,
+            imdb_id VARCHAR(20) DEFAULT NULL,
+            status BOOLEAN NOT NULL DEFAULT 0,
+            created_at TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00'::TIMESTAMP WITHOUT TIME ZONE,
+            updated_at TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00'::TIMESTAMP WITHOUT TIME ZONE
+        )");
     }
 
     public function down(Schema $schema) : void
     {
-        // this down() migration is auto-generated, please modify it to your needs
-        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
-
         $this->addSql('CREATE SCHEMA public');
         $this->addSql('DROP SEQUENCE movie_id_seq CASCADE');
         $this->addSql('DROP TABLE movie');
