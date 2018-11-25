@@ -12,12 +12,12 @@ final class Version20181115174027 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
-        $this->addSql('CREATE TABLE media (
+        $this->addSql("CREATE TABLE media (
             id SERIAL PRIMARY KEY,
             movie_id INT REFERENCES movie(id),
             url VARCHAR(255) NOT NULL,
             type INT NOT NULL
-        )');
+        )");
     }
 
     public function down(Schema $schema) : void

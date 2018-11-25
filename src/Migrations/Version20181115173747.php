@@ -23,11 +23,11 @@ final class Version20181115173747 extends AbstractMigration
             director VARCHAR(100) NOT NULL,
             recommended_age INT NOT NULL,
             rating NUMERIC NOT NULL DEFAULT 0.00,
-            status BOOLEAN NOT NULL DEFAULT 0,
-            launch_date TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00'::TIMESTAMP WITHOUT TIME ZONE,
-            created_at TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00'::TIMESTAMP WITHOUT TIME ZONE,
-            updated_at TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00'::TIMESTAMP WITHOUT TIME ZONE
-        ");
+            status INT NOT NULL DEFAULT 0,
+            launch_date TIMESTAMP NOT NULL DEFAULT '2001-01-01 00:00:00'::TIMESTAMP WITHOUT TIME ZONE,
+            created_at TIMESTAMP NOT NULL DEFAULT '2001-01-01 00:00:00'::TIMESTAMP WITHOUT TIME ZONE,
+            updated_at TIMESTAMP NOT NULL DEFAULT '2001-01-01 00:00:00'::TIMESTAMP WITHOUT TIME ZONE
+        )");
     }
 
     public function down(Schema $schema) : void
