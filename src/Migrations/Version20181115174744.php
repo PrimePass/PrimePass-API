@@ -1,0 +1,46 @@
+<?php declare(strict_types=1);
+
+namespace DoctrineMigrations;
+
+use Doctrine\DBAL\Schema\Schema;
+use Doctrine\Migrations\AbstractMigration;
+
+/**
+ * Auto-generated Migration: Please modify to your needs!
+ */
+final class Version20181115174744 extends AbstractMigration
+{
+    public function up(Schema $schema) : void
+    {
+        $this->addSql('CREATE TABLE theater_info (
+            id SERIAL PRIMARY KEY,
+            theater_id REFERENCES theater(id),
+            city_id REFERENCES city(id),
+            address_id REFERENCES address(id),
+            name NVARCHAR(255) NOT NULL,
+            is_active BIT NOT NULL DEFAULT 0,
+            latitude DOUBLE PRECISION NOT NULL,
+            longitude DOUBLE PRECISION NOT NULL,
+        )');
+    }
+
+    public function down(Schema $schema) : void
+    {
+        $this->addSql('DROP SEQUENCE movie_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE address_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE media_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE city_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE cinema_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE theater_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE movie_info_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE theater_info_id_seq CASCADE');
+        $this->addSql('DROP TABLE movie');
+        $this->addSql('DROP TABLE address');
+        $this->addSql('DROP TABLE media');
+        $this->addSql('DROP TABLE city');
+        $this->addSql('DROP TABLE cinema');
+        $this->addSql('DROP TABLE theater');
+        $this->addSql('DROP TABLE movie_info');
+        $this->addSql('DROP TABLE theater_info');
+    }
+}
