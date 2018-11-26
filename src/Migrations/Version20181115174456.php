@@ -15,7 +15,7 @@ final class Version20181115174456 extends AbstractMigration
         $this->addSql('CREATE TABLE address (
             id SERIAL PRIMARY KEY,
             name VARCHAR(150) NOT NULL,
-            "number" INT NOT NULL DEFAULT 0,
+            "number" VARCHAR NOT NULL,
             district VARCHAR(60) NOT NULL,
             zip_code VARCHAR(15) NOT NULL
         )');

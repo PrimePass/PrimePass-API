@@ -8,5 +8,24 @@ api:
     controller: App\Controller\AuthController::api
 
 login_check:
-    path:     /login_check
-methods: [POST]
+    path: /login_check
+    methods: [POST]
+
+address:
+    path: /address
+    controller: App\Controller\AddressController::Address
+    methods: [GET]
+
+city:
+    path: /city
+    controller: App\Controller\CityController::City
+    methods: [GET]
+
+cinema_theater:
+    path: /cinema_theater
+    controller: App\Controller\Cinema_TheaterController::Cinema_Theater
+    methods: [GET]
+
+
+
+

@@ -18,8 +18,8 @@ final class Version20181115173450 extends AbstractMigration
             ingresso_db INT DEFAULT NULL,
             imdb_id VARCHAR(20) DEFAULT NULL,
             status INT NOT NULL DEFAULT 0,
-            created_at TIMESTAMP NOT NULL DEFAULT '2001-01-01 00:00:00'::TIMESTAMP WITHOUT TIME ZONE,
-            updated_at TIMESTAMP NOT NULL DEFAULT '2001-01-01 00:00:00'::TIMESTAMP WITHOUT TIME ZONE
+            created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMP NOT NULL DEFAULT NOW()
         )");
     }
 

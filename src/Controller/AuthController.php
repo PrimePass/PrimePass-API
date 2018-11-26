@@ -5,6 +5,7 @@
     use Symfony\Component\HttpFoundation\Response;
     use App\Entity\User;
     use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+    
     class AuthController extends AbstractController
     {
         public function register(Request $request, UserPasswordEncoderInterface $encoder)
@@ -20,6 +21,7 @@
             $em->flush();
             return new Response(sprintf('User %s successfully created', $user->getUsername()));
         }
+        
         public function api()
         {
             return new Response(sprintf('Logged in as %s', $this->getUser()->getUsername()));

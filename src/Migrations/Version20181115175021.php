@@ -21,9 +21,9 @@ final class Version20181115175021 extends AbstractMigration
             room INT NOT NULL,
             type_room VARCHAR(50) NOT NULL,
             price MONEY NOT NULL DEFAULT 0.00,
-            date_hour TIMESTAMP NOT NULL DEFAULT '2001-01-01 00:00'::TIMESTAMP WITHOUT TIME ZONE ,
-            created_at TIMESTAMP NOT NULL DEFAULT '2001-01-01 00:00:00'::TIMESTAMP WITHOUT TIME ZONE,
-            updated_at TIMESTAMP NOT NULL DEFAULT '2001-01-01 00:00:00'::TIMESTAMP WITHOUT TIME ZONE
+            date_hour TIMESTAMP NOT NULL DEFAULT NOW(),
+            created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMP NOT NULL DEFAULT NOW()
         )");
     }
 

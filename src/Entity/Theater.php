@@ -17,25 +17,11 @@ class Theater
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\cinema")
-     * @ORM\JoinColumn(nullable=false)
-     */
+    * @ORM\ManyToOne(targetEntity="App\Entity\Cinema", inversedBy="theaters", cascade={"persist", "remove"})
+    * @ORM\JoinColumn(name="cinema_id", referencedColumnName="id", nullable=FALSE)
+    */
     private $cinema;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $booking_cinema;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $booking_id;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getCinema(): ?cinema
     {
@@ -48,6 +34,22 @@ class Theater
 
         return $this;
     }
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $booking_cinema;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $booking_id;
+    
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
 
     public function getBookingCinema(): ?string
     {

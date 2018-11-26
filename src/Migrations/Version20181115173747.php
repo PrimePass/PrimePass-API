@@ -24,9 +24,9 @@ final class Version20181115173747 extends AbstractMigration
             recommended_age INT NOT NULL,
             rating NUMERIC NOT NULL DEFAULT 0.00,
             status INT NOT NULL DEFAULT 0,
-            launch_date TIMESTAMP NOT NULL DEFAULT '2001-01-01 00:00:00'::TIMESTAMP WITHOUT TIME ZONE,
-            created_at TIMESTAMP NOT NULL DEFAULT '2001-01-01 00:00:00'::TIMESTAMP WITHOUT TIME ZONE,
-            updated_at TIMESTAMP NOT NULL DEFAULT '2001-01-01 00:00:00'::TIMESTAMP WITHOUT TIME ZONE
+            launch_date TIMESTAMP NOT NULL DEFAULT NOW(),
+            created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMP NOT NULL DEFAULT NOW()
         )");
     }
 

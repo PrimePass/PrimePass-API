@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CinemaRepository")
@@ -22,14 +24,9 @@ class Cinema
     private $name;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    private $digital;
-
-    /**
      * @ORM\Column(type="integer")
      */
-    private $priority;
+    private $is_active;
 
     /**
      * @ORM\Column(type="datetime")
@@ -40,6 +37,24 @@ class Cinema
      * @ORM\Column(type="datetime")
      */
     private $updated_at;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Theater", mappedBy="cinema")
+    */
+    private $theaters;
+
+    public function __construct()
+    {
+        $this->theaters = new ArrayCollection();
+    }
+
+    /**
+     * @return Collection|Theater[]
+    */
+    public function getTheaters(): Collection
+    {
+        return $this->theaters;
+    }
 
     public function getId(): ?int
     {
@@ -58,26 +73,14 @@ class Cinema
         return $this;
     }
 
-    public function getDigital(): ?bool
+    public function getIsActive(): ?int
     {
-        return $this->digital;
+        return $this->is_active;
     }
 
-    public function setDigital(bool $digital): self
+    public function setIsActive(int $is_active): self
     {
-        $this->digital = $digital;
-
-        return $this;
-    }
-
-    public function getPriority(): ?int
-    {
-        return $this->priority;
-    }
-
-    public function setPriority(int $priority): self
-    {
-        $this->priority = $priority;
+        $this->is_active = $is_active;
 
         return $this;
     }
