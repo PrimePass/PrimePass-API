@@ -22,19 +22,6 @@ class Theater
     */
     private $cinema;
 
-
-    public function getCinema(): ?cinema
-    {
-        return $this->cinema;
-    }
-
-    public function setCinema(?cinema $cinema): self
-    {
-        $this->cinema = $cinema;
-
-        return $this;
-    }
-
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -50,6 +37,17 @@ class Theater
         return $this->id;
     }
 
+    public function getCinema(): ?cinema
+    {
+        return $this->cinema;
+    }
+
+    public function setCinema(?cinema $cinema): self
+    {
+        $this->cinema = $cinema;
+
+        return $this;
+    }
 
     public function getBookingCinema(): ?string
     {

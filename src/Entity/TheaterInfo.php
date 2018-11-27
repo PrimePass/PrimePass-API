@@ -45,14 +45,9 @@ class TheaterInfo
     private $is_active;
 
     /**
-     * @ORM\Column(type="float")
+     *@ORM\Column(type="boolean")
      */
-    private $latitude;
-
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $longitude;
+    private $has_bombonieri;
 
     public function getId(): ?int
     {
@@ -119,27 +114,16 @@ class TheaterInfo
         return $this;
     }
 
-    public function getLatitude(): ?float
+        public function getHasBombonieri(): ?int
     {
-        return $this->latitude;
+        return $this->has_bombonieri;
     }
 
-    public function setLatitude(float $latitude): self
+    public function setHasBombonieri(bool $has_bombonieri): self
     {
-        $this->latitude = $latitude;
+        $this->has_bombonieri = $has_bombonieri;
 
         return $this;
     }
 
-    public function getLongitude(): ?float
-    {
-        return $this->longitude;
-    }
-
-    public function setLongitude(float $longitude): self
-    {
-        $this->longitude = $longitude;
-
-        return $this;
-    }
 }

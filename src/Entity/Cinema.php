@@ -24,7 +24,7 @@ class Cinema
     private $name;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="boolean")
      */
     private $is_active;
 
@@ -37,29 +37,6 @@ class Cinema
      * @ORM\Column(type="datetime")
      */
     private $updated_at;
-    
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Theater", mappedBy="cinema")
-    */
-    private $theaters;
-
-    public function __construct()
-    {
-        $this->theaters = new ArrayCollection();
-    }
-
-    /**
-     * @return Collection|Theater[]
-    */
-    public function getTheaters(): Collection
-    {
-        return $this->theaters;
-    }
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getName(): ?string
     {
@@ -73,12 +50,12 @@ class Cinema
         return $this;
     }
 
-    public function getIsActive(): ?int
+    public function getIsActive(): ?bool
     {
         return $this->is_active;
     }
 
-    public function setIsActive(int $is_active): self
+    public function setIsActive(bool $is_active): self
     {
         $this->is_active = $is_active;
 
