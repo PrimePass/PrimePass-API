@@ -53,7 +53,7 @@ class MovieInfo
     private $director;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      */
     private $recommended_age;
 

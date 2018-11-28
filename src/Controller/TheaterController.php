@@ -34,9 +34,9 @@ class TheaterController extends AbstractController
             $address_number = $value->number;
             $address_district = $value->neighborhood;
             $address_zipcode = $value->districtAuthorization;
-            $address_lat = 10.00;//$value->geolocation->lat;
-            $address_lng = -10.00;//$value->geolocation->lng;
-
+            $address_lat = $value->geolocation->lat;
+            $address_lng = $value->geolocation->lng;
+            
             /*Register City*/
             $city_name = $value->cityName;
             $city_state = $value->uf;

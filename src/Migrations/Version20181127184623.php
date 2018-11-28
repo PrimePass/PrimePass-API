@@ -21,7 +21,7 @@ final class Version20181127184623 extends AbstractMigration
             category VARCHAR(35) NOT NULL, 
             actor VARCHAR(255) NOT NULL, 
             director VARCHAR(255) NOT NULL, 
-            recommended_age INT NOT NULL, 
+            recommended_age VARCHAR(50) NOT NULL, 
             rating DOUBLE PRECISION NOT NULL, 
             status BOOLEAN NOT NULL DEFAULT 0, 
             launch_date TIMESTAMP NOT NULL, 

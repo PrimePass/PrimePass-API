@@ -16,6 +16,10 @@ theater:
     controller: App\Controller\TheaterController::newTheater
     methods: [GET]
 
+movie:
+    path: /movie
+    controller: App\Controller\MovieController::newMovie
+    methods: [GET]
 
 
 
