@@ -24,7 +24,7 @@ final class Version20181127184623 extends AbstractMigration
             recommended_age VARCHAR(50) NOT NULL, 
             rating DOUBLE PRECISION NOT NULL, 
             status BOOLEAN NOT NULL DEFAULT 0, 
-            launch_date TIMESTAMP NOT NULL, 
+            launch_date VARCHAR(255) NOT NULL, 
             created_at TIMESTAMP NOT NULL, 
             updated_at TIMESTAMP NOT NULL
         )");

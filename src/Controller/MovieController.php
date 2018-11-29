@@ -43,7 +43,10 @@ class MovieController extends AbstractController
             $movie_info_description = $value->synopsis;
             $movie_info_genre_0 = $value->genres[0];
 
-            if($value->genres[1])
+            var_dump($value->genres[1]);
+            die;
+
+            if(isset($value->genres[1]))
             {
                 $movie_info_genre_1 = $value->genres[1];
                 $movie_info_category = $movie_info_genre_0.', '.$movie_info_genre_1;
@@ -65,18 +68,20 @@ class MovieController extends AbstractController
             /*Media*/
             //id = PRIMARY KEY;
             //$movie_id = FOREIGN KEY REFERENCES movie(id)
-            if($value->trailers){
+            if($value->trailers)
+            {
                 $medias = array(
-                    array($url = $value->images[0]->url, $value->images[0]->type),
-                    array($url = $value->images[1]->url, $value->images[1]->type),
-                    array($url = $value->trailers[0]->url, $value->trailers[0]->type),
-                    array($url = $value->trailers[1]->url, $value->trailers[1]->type),
+                    array("url" => $value->images[0]->url, "type" => $value->images[0]->type),
+                    array("url" => $value->images[1]->url, "type" => $value->images[1]->type),
+                    array("url" => $value->trailers[0]->url, "type" => $value->trailers[0]->type),
+                    array("url" => $value->trailers[1]->url, "type" => $value->trailers[1]->type),
                 );
             }
-            else{
+            else
+            {
                 $medias = array(
-                    array($url = $value->images[0]->url, $value->images[0]->type),
-                    array($url = $value->images[1]->url, $value->images[1]->type),
+                    array("url" => $value->images[0]->url, "type" => $value->images[0]->type),
+                    array("url" => $value->images[1]->url, "type" => $value->images[1]->type),
                 );
             }
            
@@ -86,6 +91,7 @@ class MovieController extends AbstractController
             $movie->setImdbId($movie_imdb_id);
             $movie->setStatus($movie_status);
             $entityManager->persist($movie);
+            $entityManager->flush();
 
             $movie_info = new MovieInfo();
             $movie_info->setMovie($movie);
@@ -102,18 +108,17 @@ class MovieController extends AbstractController
             $movie_info->setCreatedAt($movie_info_created_at);
             $movie_info->setUpdatedAt($movie_info_updated_at);
             $entityManager->persist($movie_info);
+            $entityManager->flush();
 
             foreach($medias as $media)
             {
                 $media = new Media();
                 $media->setMovie($movie);
-                $media->setUrl($media[$url]);
-                $media->setType($media[$type]);
+                $media->setUrl("url");
+                $media->setType("type");
                 $entityManager->persist($media);
-
                 $entityManager->flush();
             }
-            $entityManager->flush();
         }
     }
 }

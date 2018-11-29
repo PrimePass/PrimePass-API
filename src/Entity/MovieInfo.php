@@ -68,7 +68,7 @@ class MovieInfo
     private $status;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string", length=255)
      */
     private $launch_date;
 
@@ -171,12 +171,12 @@ class MovieInfo
         return $this;
     }
 
-    public function getRecommendedAge(): ?int
+    public function getRecommendedAge(): ?string
     {
         return $this->recommended_age;
     }
 
-    public function setRecommendedAge(int $recommended_age): self
+    public function setRecommendedAge(string $recommended_age): self
     {
         $this->recommended_age = $recommended_age;
 
@@ -207,12 +207,12 @@ class MovieInfo
         return $this;
     }
 
-    public function getLaunchDate(): ?\DateTimeInterface
+    public function getLaunchDate(): ?string
     {
         return $this->launch_date;
     }
 
-    public function setLaunchDate(\DateTimeInterface $launch_date): self
+    public function setLaunchDate(string $launch_date): self
     {
         $this->launch_date = $launch_date;
 

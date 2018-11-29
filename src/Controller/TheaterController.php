@@ -34,8 +34,8 @@ class TheaterController extends AbstractController
             $address_number = $value->number;
             $address_district = $value->neighborhood;
             $address_zipcode = $value->districtAuthorization;
-            $address_lat = $value->geolocation->lat;
-            $address_lng = $value->geolocation->lng;
+            $address_lat = 10.00;//$value->geolocation->lat;
+            $address_lng = -10.00;// $value->geolocation->lng;
             
             /*Register City*/
             $city_name = $value->cityName;
@@ -71,11 +71,13 @@ class TheaterController extends AbstractController
             $address->setLatitude($address_lat);
             $address->setLongitude($address_lng);
             $entityManager->persist($address);
+            $entityManager->flush();
 
             $city = new City();
             $city->setName($city_name);
             $city->setState($city_state);
             $entityManager->persist($city);
+            $entityManager->flush();
 
             if($cinema_tag = $entityManager->getRepository('App:Cinema')->findOneByName($cinema_name) == null) 
             {   
@@ -85,12 +87,14 @@ class TheaterController extends AbstractController
                 $cinema->setCreatedAt($cinema_created_at);
                 $cinema->setUpdatedAt($cinema_updated_at);
                 $entityManager->persist($cinema);
+                $entityManager->flush();
 
                 $theater = new Theater();
                 $theater->setCinema($cinema);
                 $theater->setBookingCinema($theater_booking_cinema);
                 $theater->setBookingId($theater_booking_id);
                 $entityManager->persist($theater);
+                $entityManager->flush();
             } 
             else 
             {   
@@ -99,6 +103,7 @@ class TheaterController extends AbstractController
                 $theater->setBookingCinema($theater_booking_cinema);
                 $theater->setBookingId($theater_booking_id);
                 $entityManager->persist($theater);
+                $entityManager->flush();
             }
 
             $theater_info = new TheaterInfo();
@@ -109,7 +114,6 @@ class TheaterController extends AbstractController
             $theater_info->setIsActive($theater_info_is_active);
             $theater_info->setHasBombonieri($theater_info_has_bombonieri);
             $entityManager->persist($theater_info);
-
             $entityManager->flush();
         }
     }
