@@ -34,9 +34,15 @@ class TheaterController extends AbstractController
             $address_number = $value->number;
             $address_district = $value->neighborhood;
             $address_zipcode = $value->districtAuthorization;
-            $address_lat = 10.00;//$value->geolocation->lat;
-            $address_lng = -10.00;// $value->geolocation->lng;
-            
+            $address_lat = $value->geolocation->lat;
+            $address_lng = $value->geolocation->lng;
+
+            // echo '<pre>';
+            // var_dump($value->geolocation);
+            // var_dump($value->geolocation->lat);
+            // var_dump($value->geolocation->lng);
+            // die;
+
             /*Register City*/
             $city_name = $value->cityName;
             $city_state = $value->uf;
@@ -87,24 +93,15 @@ class TheaterController extends AbstractController
                 $cinema->setCreatedAt($cinema_created_at);
                 $cinema->setUpdatedAt($cinema_updated_at);
                 $entityManager->persist($cinema);
-                $entityManager->flush();
-
-                $theater = new Theater();
-                $theater->setCinema($cinema);
-                $theater->setBookingCinema($theater_booking_cinema);
-                $theater->setBookingId($theater_booking_id);
-                $entityManager->persist($theater);
-                $entityManager->flush();
-            } 
-            else 
-            {   
-                $theater = new Theater();
-                $theater->setCinema($cinema);
-                $theater->setBookingCinema($theater_booking_cinema);
-                $theater->setBookingId($theater_booking_id);
-                $entityManager->persist($theater);
-                $entityManager->flush();
+                $entityManager->flush();             
             }
+
+            $theater = new Theater();
+            $theater->setCinema($cinema);
+            $theater->setBookingCinema($theater_booking_cinema);
+            $theater->setBookingId($theater_booking_id);
+            $entityManager->persist($theater);
+            $entityManager->flush();
 
             $theater_info = new TheaterInfo();
             $theater_info->setTheater($theater);

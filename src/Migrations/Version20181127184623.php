@@ -15,8 +15,8 @@ final class Version20181127184623 extends AbstractMigration
         $this->addSql("CREATE TABLE movie_info(
             id SERIAL PRIMARY KEY, 
             movie_id INT REFERENCES movie(id), 
-            name VARCHAR(255) NOT NULL, 
-            duration INT NOT NULL, 
+            name VARCHAR(100) NOT NULL, 
+            duration VARCHAR(55) NOT NULL, 
             description TEXT NOT NULL, 
             category VARCHAR(35) NOT NULL, 
             actor VARCHAR(255) NOT NULL, 
